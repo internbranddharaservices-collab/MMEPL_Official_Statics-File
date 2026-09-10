@@ -36,3 +36,8 @@ Content sourced from mmepl.co.in (about-company, mission-vision, director-desk, 
 - P1: Real board/team photos (currently stock portraits + monogram avatars).
 - P2: Additional pages the user mentioned will follow ("after this I will give you other page design").
 - P2: Real client logos on directory cards.
+
+## Iteration 2 (2026-06)
+- FIXED BUG: blank page on first in-app navigation. Root cause: `useReveal` ran only once on Layout mount (Layout never re-rendered on SPA route changes), so new pages' `.reveal` elements stayed at opacity:0 until a hard refresh. Fix: `useReveal` now depends on `useLocation().pathname` and re-scans on every route change (rAF + 500ms fallback). Verified 100% by testing agent (iteration_2.json).
+- Annual Report redesigned: added a "Revenue in ₹ Cr." bar chart (7 years, projected 2025-26 in gold) + a Sl.No/Year/Revenue table, matching the reference with a premium look.
+- Board of Directors: real photos wired (public/images/pradeep.png, vandana.png) + verbatim director-desk.php content for Pradeep Sharma and Vandana Singh. Director/HR images site-wide now use these.

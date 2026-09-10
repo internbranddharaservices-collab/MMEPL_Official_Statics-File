@@ -1,12 +1,16 @@
 import React from "react";
 import PageHero from "../components/PageHero";
 import CTA from "../components/CTA";
-import { ANNUAL_REPORTS, REPORT_HIGHLIGHTS, IMAGES } from "../content";
-import { FileText, Download, Lock, TrendingUp } from "lucide-react";
+import { ANNUAL_REPORTS, REPORT_HIGHLIGHTS, REVENUE, IMAGES } from "../content";
+import { FileText, Download, Lock, TrendingUp, IndianRupee } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
+
+const MAX = 30; // chart y-axis max (Cr)
+const TICKS = [30, 25, 20, 15, 10, 5, 0];
 
 export default function AnnualReportPage() {
   const { toast } = useToast();
+  const table = [...REVENUE].reverse(); // newest first for the table
 
   const handleDownload = (r) => {
     if (r.pdf) {
@@ -50,8 +54,103 @@ export default function AnnualReportPage() {
         </div>
       </section>
 
-      {/* Report list */}
-      <section className="bg-[#f5f4f1] py-24 lg:py-28">
+      {/* Revenue chart + table */}
+      <section className="bg-[#f5f4f1] py-24 lg:py-28" data-testid="revenue-section">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
+          <div className="max-w-2xl reveal mb-14">
+            <p className="kicker text-[#c8a25c] mb-5">Financial Highlights</p>
+            <h2 className="font-display text-[#0a1a2f] text-3xl md:text-4xl leading-[1.05]" style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>
+              Revenue growth year on year
+            </h2>
+          </div>
+
+          {/* Chart card */}
+          <div className="reveal bg-white rounded-lg shadow-[0_20px_60px_rgba(10,26,47,0.10)] border border-gray-100 p-6 sm:p-10 overflow-hidden">
+            <div className="flex items-center justify-center gap-2 mb-10">
+              <IndianRupee size={18} className="text-[#c8a25c]" />
+              <h3 className="font-display text-[#0a1a2f] text-xl md:text-2xl text-center" style={{ fontWeight: 800 }}>Revenue in <span className="text-[#c8a25c]">₹ Cr.</span></h3>
+            </div>
+
+            <div className="flex gap-3 sm:gap-6">
+              {/* Y axis */}
+              <div className="hidden sm:flex flex-col justify-between h-[340px] text-[11px] text-gray-400 pr-1 text-right w-6">
+                {TICKS.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+
+              {/* Bars */}
+              <div className="relative flex-1">
+                {/* gridlines */}
+                <div className="absolute inset-0 flex flex-col justify-between h-[340px] pointer-events-none">
+                  {TICKS.map((t) => (
+                    <div key={t} className="border-t border-dashed border-gray-100" />
+                  ))}
+                </div>
+
+                <div className="relative flex items-end justify-between h-[340px] gap-2 sm:gap-4">
+                  {REVENUE.map((r) => {
+                    const h = Math.max((r.cr / MAX) * 100, 2);
+                    return (
+                      <div key={r.year} className="group flex-1 flex flex-col items-center justify-end h-full">
+                        <span className={`mb-2 text-[11px] sm:text-sm font-semibold ${r.projected ? "text-[#c8a25c]" : "text-[#0a1a2f]"}`}>
+                          {r.projected && <span className="hidden md:inline text-[10px] text-gray-400 font-normal mr-1">Projected</span>}
+                          {r.cr.toFixed(2)}
+                        </span>
+                        <div className="w-full flex justify-center items-end gap-[3px] h-full">
+                          {/* shadow bar */}
+                          <div
+                            className="w-1/3 max-w-[10px] bg-gray-300/70 rounded-t-[2px]"
+                            style={{ height: `${h}%`, transition: "height 1s cubic-bezier(0.16,1,0.3,1)" }}
+                          />
+                          {/* main bar */}
+                          <div
+                            className={`w-2/3 max-w-[22px] rounded-t-[3px] ${r.projected ? "bg-[#c8a25c]" : "bg-gradient-to-t from-[#0d2240] to-[#1c4b7a]"} group-hover:opacity-90`}
+                            style={{ height: `${h}%`, transition: "height 1.1s cubic-bezier(0.16,1,0.3,1)" }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                {/* X axis labels */}
+                <div className="flex items-start justify-between gap-2 sm:gap-4 mt-3 border-t border-gray-200 pt-3">
+                  {REVENUE.map((r) => (
+                    <span key={r.year} className="flex-1 text-center text-[10px] sm:text-xs text-gray-500 whitespace-nowrap">{r.year}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Revenue table */}
+          <div className="reveal reveal-delay-1 mt-8 bg-white rounded-lg shadow-[0_20px_60px_rgba(10,26,47,0.08)] border border-gray-100 overflow-x-auto" data-testid="revenue-table">
+            <table className="w-full text-left min-w-[440px]">
+              <thead>
+                <tr className="bg-[#0a1a2f] text-white">
+                  <th className="py-4 px-5 sm:px-8 text-xs tracking-widest uppercase font-semibold w-16">Sl. No.</th>
+                  <th className="py-4 px-5 sm:px-8 text-xs tracking-widest uppercase font-semibold">Year</th>
+                  <th className="py-4 px-5 sm:px-8 text-xs tracking-widest uppercase font-semibold text-right">Revenue (in ₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {table.map((r, i) => (
+                  <tr key={r.year} className={`border-b border-gray-100 last:border-0 ${i % 2 ? "bg-[#faf9f6]" : "bg-white"} hover:bg-[#fbf3e2] transition-colors`}>
+                    <td className="py-4 px-5 sm:px-8 text-sm text-[#c8a25c] font-bold">{i + 1}</td>
+                    <td className="py-4 px-5 sm:px-8 text-sm text-gray-700 font-medium">{r.year.replace("–", "to")}</td>
+                    <td className="py-4 px-5 sm:px-8 text-sm text-[#0a1a2f] font-semibold text-right">
+                      {r.amount} {r.projected && <span className="text-[#c8a25c] font-normal">(Projected)</span>}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Download centre */}
+      <section className="bg-white py-24 lg:py-28">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl reveal mb-14">
             <p className="kicker text-[#c8a25c] mb-5">Download Centre</p>
@@ -64,7 +163,7 @@ export default function AnnualReportPage() {
               <div
                 key={r.year}
                 data-testid={`report-card-${i}`}
-                className={`reveal reveal-delay-${(i % 3) + 1} group bg-white rounded-sm border border-gray-100 p-7 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-400`}
+                className={`reveal reveal-delay-${(i % 3) + 1} group bg-[#f5f4f1] rounded-sm border border-gray-100 p-7 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-400`}
               >
                 <div className="flex items-start justify-between mb-8">
                   <div className="w-12 h-12 grid place-items-center bg-[#0a1a2f] rounded-sm group-hover:bg-[#c8a25c] transition-colors duration-400">
@@ -82,7 +181,7 @@ export default function AnnualReportPage() {
                   className={`mt-auto inline-flex items-center justify-center gap-2 text-sm font-medium py-3 rounded-sm transition-all duration-300 ${
                     r.pdf
                       ? "bg-[#0a1a2f] text-white hover:bg-[#c8a25c] hover:text-[#0a1a2f]"
-                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                      : "bg-white text-gray-500 border border-gray-200 hover:bg-gray-100"
                   }`}
                 >
                   {r.pdf ? <><Download size={16} /> Download PDF</> : <><Lock size={15} /> Available Soon</>}

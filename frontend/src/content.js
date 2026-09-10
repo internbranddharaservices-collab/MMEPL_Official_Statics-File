@@ -33,8 +33,8 @@ export const IMAGES = {
   // ---- CAREERS ----
   careers: "https://images.unsplash.com/photo-1547895749-888a559fc2a7?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
   // ---- DIRECTOR / TEAM PORTRAITS ----
-  director: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
-  hr: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+  director: "/images/pradeep.png",
+  hr: "/images/vandana.png",
   // ---- WE ARE SUBPAGE HEROES ----
   boardHero: "https://images.unsplash.com/photo-1758518730083-4c12527b6742?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
   teamHero: "https://images.unsplash.com/photo-1694521787799-ad4ad241cb39?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
@@ -367,23 +367,27 @@ export const BOARD = [
   {
     name: "Pradeep Sharma",
     role: "Director & CEO",
-    image: IMAGES.director,
+    image: "/images/pradeep.png",
+    imgPos: "object-top",
     message: [
-      "As the Director and CEO of MME Private Limited, I am both honoured and excited to share with you the story of our company and the values that have driven us to success in the dynamic world of engineering and construction.",
-      "Founded on the principles of innovation, precision and dedication, MME Private Limited has steadily built a legacy of trust and excellence. For over a decade we have consistently delivered high-quality mechanical and civil solutions to industries ranging from cement and steel to power and infrastructure.",
-      "At MME, we believe the foundation of our success lies in our unwavering commitment to quality, safety and customer satisfaction. Our engineers, technicians and professionals work tirelessly to provide customised solutions that drive efficiency, reduce costs and ensure sustainability for our clients.",
-      "As we continue to innovate and expand, we remain focused on building long-term relationships based on mutual respect and trust — embracing every challenge as an opportunity for growth.",
+      "Welcome to MME Private Limited! As the Director and CEO of MME Private Limited, I am both honored and excited to share with you the story of our company and the values that have driven us to success in the dynamic world of mechanical engineering.",
+      "Founded on the principles of innovation, precision, and dedication, MME Private Limited has steadily built a legacy of trust and excellence. For over ten years, we have consistently delivered high-quality mechanical solutions to industries ranging from automotive, construction, manufacturing, etc. Our ability to meet the evolving needs of our clients and address complex engineering challenges has positioned us as a reliable partner in the mechanical engineering space.",
+      "At MME Private Limited, we believe that the foundation of our success lies in our unwavering commitment to quality, safety, and customer satisfaction. Our team of engineers, technicians, and professionals work tirelessly to provide customized solutions that drive efficiency, reduce costs, and ensure sustainability for our clients.",
+      "As we continue to innovate and expand, we remain focused on building long-term relationships with our customers based on mutual respect and trust. We embrace challenges as opportunities for growth and are committed to staying at the cutting edge of technology, ensuring that we continue to meet the highest standards in the industry.",
+      "Thank you for visiting our website. We invite you to explore our range of products and services and look forward to the possibility of working together to create lasting solutions for your business.",
     ],
   },
   {
     name: "Vandana Singh",
-    role: "General Manager – Human Resource",
-    image: IMAGES.hr,
+    role: "General Manager - Human Resource",
+    image: "/images/vandana.png",
+    imgPos: "object-top",
     message: [
-      "As the General Manager – Human Resource, I am proud to lead our efforts in building and nurturing the most valuable asset of our company: our people. At MME, the strength of our organisation lies in the talent, dedication and passion of our team members.",
-      "Our HR philosophy is centred around attracting, developing and retaining the best talent in the industry. We invest in training, professional development and a supportive work culture that promotes continuous learning and encourages excellence at every level.",
-      "We place a strong emphasis on providing a safe, inclusive and engaging workplace where every individual has the opportunity to thrive. By aligning our people strategies with the company's vision, we prepare for the challenges and opportunities of tomorrow.",
-      "At MME we are more than just a team — we are a family that values integrity, collaboration and mutual respect, and we continue to invest in making MME a great place to work.",
+      "Welcome to MME Private Limited! As the General Manager - Human Resource, I am proud to lead our efforts in building and nurturing the most valuable asset of our company - our people. At MME Private Limited, we believe that the strength of our organization lies in the talent, dedication, and passion of our team members. We are committed to creating an environment that fosters growth, collaboration, and innovation, empowering our employees to reach their full potential.",
+      "Our HR philosophy is centered around attracting, developing, and retaining the best talent in the mechanical engineering industry. We invest in training, professional development, and a supportive work culture that promotes continuous learning and encourages excellence at all levels of the organization.",
+      "We understand that in today's rapidly evolving industry, the success of any business is closely tied to the skills and expertise of its workforce. That's why we place a strong emphasis on providing a safe, inclusive, and engaging workplace where every individual has the opportunity to thrive. By aligning our people strategies with the company's vision, we ensure that we are not only meeting the needs of today but also preparing for the challenges and opportunities of tomorrow.",
+      "At MME Private Limited, we are more than just a team—we are a family that values integrity, collaboration, and mutual respect. We are proud of the culture we have built, and we continue to invest in making MME Private Limited a great place to work.",
+      "Thank you for visiting our website. We invite you to learn more about the opportunities that await and how we can work together to achieve success.",
     ],
   },
 ];
@@ -425,4 +429,15 @@ export const REPORT_HIGHLIGHTS = [
   { value: "12+", label: "Marquee Clients" },
   { value: "20+", label: "Years of Expertise" },
   { value: "6", label: "Industry Sectors" },
+];
+
+// Revenue growth (in ₹ Crore) — chronological for the chart
+export const REVENUE = [
+  { year: "2019 – 20", cr: 1.23, amount: "₹1,23,45,014/-", projected: false },
+  { year: "2020 – 21", cr: 5.04, amount: "₹5,04,37,443/-", projected: false },
+  { year: "2021 – 22", cr: 2.09, amount: "₹2,08,84,430/-", projected: false },
+  { year: "2022 – 23", cr: 6.23, amount: "₹6,22,55,561/-", projected: false },
+  { year: "2023 – 24", cr: 5.17, amount: "₹5,17,00,000/-", projected: false },
+  { year: "2024 – 25", cr: 10.68, amount: "₹10,68,00,000/-", projected: false },
+  { year: "2025 – 26", cr: 28.0, amount: "₹28,00,00,000/-", projected: true },
 ];

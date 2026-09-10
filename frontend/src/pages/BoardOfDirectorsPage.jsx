@@ -27,7 +27,7 @@ export default function BoardOfDirectorsPage() {
                 <div className="relative max-w-sm mx-auto">
                   <div className="absolute -inset-3 border border-[#c8a25c]/40 rounded-sm" />
                   <div className="img-zoom rounded-sm overflow-hidden relative shadow-2xl">
-                    <img src={d.image} alt={d.name} className="w-full h-[440px] lg:h-[500px] object-cover" />
+                    <img src={d.image} alt={d.name} className={`w-full h-[440px] lg:h-[520px] object-cover ${d.imgPos || ""}`} />
                   </div>
                   <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-[#c8a25c] text-[#0a1a2f] px-7 py-3 rounded-sm shadow-xl whitespace-nowrap text-center">
                     <p className="font-display text-lg leading-tight" style={{ fontWeight: 800 }}>{d.name}</p>
