@@ -15,6 +15,9 @@ import OurClientsPage from "./pages/OurClientsPage";
 import AnnualReportPage from "./pages/AnnualReportPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
+import WeServePage from "./pages/WeServePage";
+import WeServeCategoryPage from "./pages/WeServeCategoryPage";
+import WeServeDetailPage from "./pages/WeServeDetailPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import IndustriesPage from "./pages/IndustriesPage";
 import ClientsPage from "./pages/ClientsPage";
@@ -47,6 +50,9 @@ function App() {
           <Route path="/we-are/our-team" element={<OurTeamPage />} />
           <Route path="/we-are/our-clients" element={<OurClientsPage />} />
           <Route path="/we-are/annual-report" element={<AnnualReportPage />} />
+          <Route path="/we-serve" element={<WeServePage />} />
+          <Route path="/we-serve/:category" element={<WeServeCategoryPage />} />
+          <Route path="/we-serve/:category/:sub" element={<WeServeDetailPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:id" element={<ServiceDetailPage />} />

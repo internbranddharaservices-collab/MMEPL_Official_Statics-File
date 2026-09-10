@@ -41,3 +41,10 @@ Content sourced from mmepl.co.in (about-company, mission-vision, director-desk, 
 - FIXED BUG: blank page on first in-app navigation. Root cause: `useReveal` ran only once on Layout mount (Layout never re-rendered on SPA route changes), so new pages' `.reveal` elements stayed at opacity:0 until a hard refresh. Fix: `useReveal` now depends on `useLocation().pathname` and re-scans on every route change (rAF + 500ms fallback). Verified 100% by testing agent (iteration_2.json).
 - Annual Report redesigned: added a "Revenue in ₹ Cr." bar chart (7 years, projected 2025-26 in gold) + a Sl.No/Year/Revenue table, matching the reference with a premium look.
 - Board of Directors: real photos wired (public/images/pradeep.png, vandana.png) + verbatim director-desk.php content for Pradeep Sharma and Vandana Singh. Director/HR images site-wide now use these.
+
+## Iteration 3 (2026-06) — "We Serve" section
+- Added a data-driven "We Serve" section (navbar dropdown replaces old "Services") with 10 service categories under /we-serve/<category> and /we-serve/<category>/<sub>.
+- Categories & sub-service counts: cement-plant(7), power-projects(7), chemical-fertilizer(7), steel-projects(7), industrial-construction(7), civil-construction(7), mechanical-works(8), electrical-works(8), balance-of-plant(7), additional-services(8) — 72 detail pages total.
+- New files: src/weServe.js (all category+sub content), pages WeServePage.jsx (landing, 10 cards), WeServeCategoryPage.jsx (overview + sub grid), WeServeDetailPage.jsx (scope of work + more-in-category). Invalid slugs redirect gracefully.
+- Verified 100% by testing agent (iteration_3.json): dropdown, counts, detail routes, redirects, mobile accordion, and no regression to the blank-page fix.
+- Old /services routes remain but are unlinked from the navbar.

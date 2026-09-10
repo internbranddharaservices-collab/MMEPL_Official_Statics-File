@@ -324,6 +324,19 @@ export const WE_ARE_LINKS = [
   { label: "Annual Report", to: "/we-are/annual-report" },
 ];
 
+export const WE_SERVE_LINKS = [
+  { label: "Cement & Cement Plant Projects", to: "/we-serve/cement-plant" },
+  { label: "Power Projects", to: "/we-serve/power-projects" },
+  { label: "Chemical & Fertilizer Plants", to: "/we-serve/chemical-fertilizer" },
+  { label: "Steel Projects", to: "/we-serve/steel-projects" },
+  { label: "Industrial Construction", to: "/we-serve/industrial-construction" },
+  { label: "Civil Construction", to: "/we-serve/civil-construction" },
+  { label: "Mechanical Works", to: "/we-serve/mechanical-works" },
+  { label: "Electrical Works", to: "/we-serve/electrical-works" },
+  { label: "Balance of Plant (BoP)", to: "/we-serve/balance-of-plant" },
+  { label: "Additional Engineering Services", to: "/we-serve/additional-services" },
+];
+
 export const NAV_LINKS = [
   { label: "Home", to: "/" },
   {
@@ -332,9 +345,9 @@ export const NAV_LINKS = [
     children: WE_ARE_LINKS,
   },
   {
-    label: "Services",
-    to: "/services",
-    children: SERVICES.map((s) => ({ label: s.title, to: `/services/${s.id}` })),
+    label: "We Serve",
+    to: "/we-serve",
+    children: WE_SERVE_LINKS,
   },
   { label: "Projects", to: "/projects" },
   { label: "Industries", to: "/industries" },
