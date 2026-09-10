@@ -41,10 +41,14 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="font-display text-2xl tracking-tight text-white" style={{ fontWeight: 900 }}>MME</span>
-            <span className="h-6 w-[3px] bg-[#c8a25c]" />
-            <span className="hidden sm:block text-[10px] leading-tight text-white/60 font-display tracking-[0.2em] uppercase">Private<br/>Limited</span>
+          <Link to="/" className="flex items-center gap-2.5">
+            <span className="bg-white rounded-md p-1 grid place-items-center shadow-md">
+              <img src={COMPANY.logo} alt="MME Private Limited" className="h-9 w-9 object-contain" />
+            </span>
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-xl tracking-tight text-white" style={{ fontWeight: 900 }}>MME</span>
+              <span className="hidden sm:block text-[9px] text-white/60 font-display tracking-[0.2em] uppercase mt-0.5">Private Limited</span>
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-7">
@@ -97,7 +101,12 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`fixed inset-0 z-[60] bg-[#0a1a2f] transition-all duration-500 overflow-y-auto ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
         <div className="max-w-[1400px] mx-auto px-6 py-6 flex items-center justify-between">
-          <span className="font-display text-2xl text-white" style={{ fontWeight: 900 }}>MME</span>
+          <div className="flex items-center">
+            <span className="bg-white rounded-md p-1 grid place-items-center shadow-md">
+              <img src={COMPANY.logo} alt="MME Private Limited" className="h-9 w-9 object-contain" />
+            </span>
+            <span className="ml-2.5 font-display text-2xl text-white" style={{ fontWeight: 900 }}>MME</span>
+          </div>
           <button onClick={() => setOpen(false)} className="text-white p-1" aria-label="Close menu"><X size={28} /></button>
         </div>
         <nav className="px-8 mt-4 flex flex-col">

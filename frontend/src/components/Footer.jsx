@@ -13,8 +13,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center mb-6">
-              <span className="font-display text-3xl" style={{ fontWeight: 900 }}>MME</span>
-              <span className="ml-2 h-7 w-[3px] bg-[#c8a25c]" />
+              <span className="bg-white rounded-md p-1.5 grid place-items-center shadow-md">
+                <img src={COMPANY.logo} alt="MME Private Limited" className="h-10 w-10 object-contain" />
+              </span>
+              <span className="ml-3 font-display text-3xl" style={{ fontWeight: 900 }}>MME</span>
               <span className="ml-2 text-[11px] leading-tight text-white/60 font-display tracking-[0.2em] uppercase">Private<br/>Limited</span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">

@@ -55,19 +55,35 @@ export const COMPANY = {
   offices: [
     {
       label: "Head / Corporate Office",
+      type: "Head Office",
       address:
         "A-111 & 112, First Floor, A Block, Plot No-2, Shakti Khand-2, Indrapuram, Ghaziabad, Uttar Pradesh 201014",
+      phone: "+91-120-3664152",
+      phoneRaw: "tel:+911203664152",
+      email: "info@mmepl.co.in",
+      map: "A-111 Shakti Khand 2 Indrapuram Ghaziabad Uttar Pradesh 201014",
     },
     {
       label: "Registered Office",
-      address: "Plot No-1-1/25 Kalp City, Bijnaur Road, Lucknow, UP 226001",
+      type: "Registered Office",
+      address: "Plot No-1-1/25 Kalp City, Bijnaur Road, Lucknow, Uttar Pradesh 226001",
+      phone: "+91-120-3664152",
+      phoneRaw: "tel:+911203664152",
+      email: "info@mmepl.co.in",
+      map: "Kalp City Bijnaur Road Lucknow Uttar Pradesh 226001",
     },
     {
       label: "Branch Office",
+      type: "Branch Office",
       address:
         "2nd Floor, Holding No-15 Sakshi, Sitaramdera, Jamshedpur, Jharkhand 831001",
+      phone: "+91-120-3664152",
+      phoneRaw: "tel:+911203664152",
+      email: "info@mmepl.co.in",
+      map: "Sitaramdera Jamshedpur Jharkhand 831001",
     },
   ],
+  logo: "/images/mmepl-logo.png",
 };
 
 export const HERO = [
