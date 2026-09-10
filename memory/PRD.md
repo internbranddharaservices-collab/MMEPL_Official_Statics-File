@@ -48,3 +48,11 @@ Content sourced from mmepl.co.in (about-company, mission-vision, director-desk, 
 - New files: src/weServe.js (all category+sub content), pages WeServePage.jsx (landing, 10 cards), WeServeCategoryPage.jsx (overview + sub grid), WeServeDetailPage.jsx (scope of work + more-in-category). Invalid slugs redirect gracefully.
 - Verified 100% by testing agent (iteration_3.json): dropdown, counts, detail routes, redirects, mobile accordion, and no regression to the blank-page fix.
 - Old /services routes remain but are unlinked from the navbar.
+
+## Iteration 4 (2026-06) — "We Serve" restructured
+- Replaced the 10-category We Serve with a cleaner 2-level structure: 4 disciplines × 4 plant sectors.
+- Disciplines: Mechanical Work, Civil Work, Electrical Work, Additional Services. Each serves: Cement Plant, Power Plant, Steel Plant, Fertilizer Plant. = 16 detail pages.
+- URLs: /we-serve, /we-serve/<discipline>, /we-serve/<discipline>/<plant>. Old slugs redirect to /we-serve.
+- Redesigned: landing = 4 discipline image cards; discipline page = 4 plant image cards with scope highlights; detail page = plant-image hero + overview image + Scope of Work + "More in <discipline>".
+- Data rewritten in src/weServe.js. Nav (WE_SERVE_LINKS) now 4 items.
+- Verified 100% by testing agent (iteration_4.json): dropdown, landing, 4 disciplines, all 16 detail routes, redirects, SPA no-blank regression, mobile accordion.

@@ -325,16 +325,10 @@ export const WE_ARE_LINKS = [
 ];
 
 export const WE_SERVE_LINKS = [
-  { label: "Cement & Cement Plant Projects", to: "/we-serve/cement-plant" },
-  { label: "Power Projects", to: "/we-serve/power-projects" },
-  { label: "Chemical & Fertilizer Plants", to: "/we-serve/chemical-fertilizer" },
-  { label: "Steel Projects", to: "/we-serve/steel-projects" },
-  { label: "Industrial Construction", to: "/we-serve/industrial-construction" },
-  { label: "Civil Construction", to: "/we-serve/civil-construction" },
-  { label: "Mechanical Works", to: "/we-serve/mechanical-works" },
-  { label: "Electrical Works", to: "/we-serve/electrical-works" },
-  { label: "Balance of Plant (BoP)", to: "/we-serve/balance-of-plant" },
-  { label: "Additional Engineering Services", to: "/we-serve/additional-services" },
+  { label: "Mechanical Work", to: "/we-serve/mechanical-work" },
+  { label: "Civil Work", to: "/we-serve/civil-work" },
+  { label: "Electrical Work", to: "/we-serve/electrical-work" },
+  { label: "Additional Services", to: "/we-serve/additional-services" },
 ];
 
 export const NAV_LINKS = [

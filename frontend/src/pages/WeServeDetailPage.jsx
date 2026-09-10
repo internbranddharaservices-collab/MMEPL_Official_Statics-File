@@ -17,9 +17,9 @@ export default function WeServeDetailPage() {
     <div data-testid="we-serve-detail-page">
       <PageHero
         kicker={`We Serve · ${cat.short}`}
-        title={service.title}
+        title={`${cat.short} — ${service.title}`}
         subtitle={service.desc}
-        image={cat.image}
+        image={service.image}
         crumbs={[
           { label: "We Serve", to: "/we-serve" },
           { label: cat.short, to: `/we-serve/${cat.slug}` },
@@ -32,8 +32,11 @@ export default function WeServeDetailPage() {
           <div className="lg:col-span-7 reveal">
             <p className="kicker text-[#c8a25c] mb-5">Overview</p>
             <p className="font-display text-[#0a1a2f] text-xl md:text-2xl leading-[1.5] mb-8" style={{ fontWeight: 500 }}>{service.desc}</p>
+            <div className="img-zoom rounded-sm overflow-hidden shadow-xl mb-8">
+              <img src={service.image} alt={service.title} className="w-full h-[280px] object-cover" />
+            </div>
             <p className="text-[15px] md:text-base leading-relaxed text-gray-600 mb-5">
-              As part of our {cat.title.toLowerCase()} capability, MME executes {service.title.toLowerCase()} with experienced engineers, dedicated machinery and disciplined project management — delivering to the highest standards of quality, safety and on-time completion anywhere in India.
+              As part of our {cat.title.toLowerCase()} capability, MME delivers {cat.short.toLowerCase()} for {service.title.toLowerCase()} projects with experienced engineers, dedicated machinery and disciplined project management — meeting the highest standards of quality, safety and on-time completion anywhere in India.
             </p>
             <p className="text-[15px] md:text-base leading-relaxed text-gray-600">
               Every mandate is backed by rigorous QA/QC, a zero-harm safety culture and single-point accountability, so our clients can rely on a partner that delivers precisely what was promised.

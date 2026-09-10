@@ -40,42 +40,47 @@ export default function WeServeCategoryPage() {
       <section className="bg-[#f5f4f1] py-24 lg:py-28">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <div className="max-w-2xl reveal mb-14">
-            <p className="kicker text-[#c8a25c] mb-5">What We Deliver</p>
+            <p className="kicker text-[#c8a25c] mb-5">Industries We Serve</p>
             <h2 className="font-display text-[#0a1a2f] text-3xl md:text-4xl leading-[1.05]" style={{ fontWeight: 800, letterSpacing: "-0.02em" }}>
-              Our {cat.short} services
+              {cat.short} across every plant sector
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-testid="sub-grid">
+          <div className="grid sm:grid-cols-2 gap-6" data-testid="sub-grid">
             {cat.subs.map((s, i) => (
               <Link
                 key={s.slug}
                 to={`/we-serve/${cat.slug}/${s.slug}`}
                 data-testid={`sub-card-${s.slug}`}
-                className={`reveal reveal-delay-${(i % 3) + 1} group bg-white rounded-sm border border-gray-100 p-7 flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-400`}
+                className={`reveal reveal-delay-${(i % 3) + 1} group relative rounded-sm overflow-hidden bg-[#0a1a2f] flex flex-col`}
               >
-                <div className="flex items-start justify-between mb-5">
-                  <span className="font-display text-[#c8a25c]/40 text-3xl" style={{ fontWeight: 800 }}>0{i + 1}</span>
-                  <span className="w-10 h-10 rounded-full border border-gray-200 grid place-items-center text-[#0a1a2f] group-hover:bg-[#c8a25c] group-hover:border-[#c8a25c] transition-all">
-                    <ArrowUpRight size={16} />
-                  </span>
+                <div className="relative h-48 overflow-hidden">
+                  <img src={s.image} alt={s.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a2f] via-[#0a1a2f]/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+                    <h3 className="font-display text-white text-2xl leading-tight" style={{ fontWeight: 800 }}>{s.title}</h3>
+                    <span className="shrink-0 w-10 h-10 rounded-full border border-white/25 grid place-items-center text-white group-hover:bg-[#c8a25c] group-hover:border-[#c8a25c] group-hover:text-[#0a1a2f] transition-all">
+                      <ArrowUpRight size={17} />
+                    </span>
+                  </div>
                 </div>
-                <h3 className="font-display text-[#0a1a2f] text-lg leading-snug mb-3" style={{ fontWeight: 800 }}>{s.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-5">{s.desc}</p>
-                <ul className="mt-auto space-y-2">
-                  {s.features.slice(0, 3).map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-[13px] text-gray-500">
-                      <Check size={14} className="text-[#c8a25c] mt-0.5 shrink-0" /> {f}
-                    </li>
-                  ))}
-                </ul>
+                <div className="bg-white p-6 flex-1 flex flex-col">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-5">{s.desc}</p>
+                  <ul className="mt-auto grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                    {s.features.slice(0, 4).map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-[13px] text-gray-500">
+                        <Check size={14} className="text-[#c8a25c] mt-0.5 shrink-0" /> {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Other categories */}
+      {/* CTA */}
       <CTA />
     </div>
   );
