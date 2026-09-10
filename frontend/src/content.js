@@ -35,6 +35,11 @@ export const IMAGES = {
   // ---- DIRECTOR / TEAM PORTRAITS ----
   director: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
   hr: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+  // ---- WE ARE SUBPAGE HEROES ----
+  boardHero: "https://images.unsplash.com/photo-1758518730083-4c12527b6742?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
+  teamHero: "https://images.unsplash.com/photo-1694521787799-ad4ad241cb39?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
+  missionVision: "https://images.unsplash.com/photo-1721244654392-9c912a6eb236?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  annualHero: "https://images.unsplash.com/photo-1509390288171-ce2088f7d08e?crop=entropy&cs=srgb&fm=jpg&q=85&w=2000",
 };
 
 export const COMPANY = {
@@ -311,9 +316,21 @@ export const CERTIFICATES = [
   { title: "UltraTech Cement Completion", img: "https://mmepl.co.in/images/project-completion-certificate-from-ultratech-cement.jpg" },
 ];
 
+export const WE_ARE_LINKS = [
+  { label: "About Company", to: "/we-are/about-company" },
+  { label: "Board of Director", to: "/we-are/board-of-directors" },
+  { label: "Our Team", to: "/we-are/our-team" },
+  { label: "Our Client", to: "/we-are/our-clients" },
+  { label: "Annual Report", to: "/we-are/annual-report" },
+];
+
 export const NAV_LINKS = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  {
+    label: "We Are",
+    to: "/we-are",
+    children: WE_ARE_LINKS,
+  },
   {
     label: "Services",
     to: "/services",
@@ -325,4 +342,87 @@ export const NAV_LINKS = [
   { label: "Gallery", to: "/gallery" },
   { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
+];
+
+// =====================================================================
+//  WE ARE — SUBPAGE CONTENT
+// =====================================================================
+
+export const MISSION_VISION = {
+  mission:
+    "We are a team committed to swift, dedicated efforts, unwavering integrity and hard work — delivering outstanding projects, products and services that stand the test of time.",
+  vision:
+    "Rising above all standards. Our vision is to create infrastructure with unparalleled quality, utmost dedication and environmentally responsible production.",
+  commitment:
+    "Committed to the timely and efficient execution of every assignment, we prioritise the excellence of our human capital to achieve continuous, sustained growth and profitability.",
+  values: [
+    { title: "Integrity", desc: "Unwavering honesty and transparency in every relationship and every decision." },
+    { title: "Quality", desc: "An uncompromising commitment to craftsmanship and engineering excellence." },
+    { title: "Safety", desc: "A zero-harm culture that protects our people, partners and communities." },
+    { title: "Sustainability", desc: "Environmentally responsible production that respects tomorrow." },
+  ],
+};
+
+export const BOARD = [
+  {
+    name: "Pradeep Sharma",
+    role: "Director & CEO",
+    image: IMAGES.director,
+    message: [
+      "As the Director and CEO of MME Private Limited, I am both honoured and excited to share with you the story of our company and the values that have driven us to success in the dynamic world of engineering and construction.",
+      "Founded on the principles of innovation, precision and dedication, MME Private Limited has steadily built a legacy of trust and excellence. For over a decade we have consistently delivered high-quality mechanical and civil solutions to industries ranging from cement and steel to power and infrastructure.",
+      "At MME, we believe the foundation of our success lies in our unwavering commitment to quality, safety and customer satisfaction. Our engineers, technicians and professionals work tirelessly to provide customised solutions that drive efficiency, reduce costs and ensure sustainability for our clients.",
+      "As we continue to innovate and expand, we remain focused on building long-term relationships based on mutual respect and trust — embracing every challenge as an opportunity for growth.",
+    ],
+  },
+  {
+    name: "Vandana Singh",
+    role: "General Manager – Human Resource",
+    image: IMAGES.hr,
+    message: [
+      "As the General Manager – Human Resource, I am proud to lead our efforts in building and nurturing the most valuable asset of our company: our people. At MME, the strength of our organisation lies in the talent, dedication and passion of our team members.",
+      "Our HR philosophy is centred around attracting, developing and retaining the best talent in the industry. We invest in training, professional development and a supportive work culture that promotes continuous learning and encourages excellence at every level.",
+      "We place a strong emphasis on providing a safe, inclusive and engaging workplace where every individual has the opportunity to thrive. By aligning our people strategies with the company's vision, we prepare for the challenges and opportunities of tomorrow.",
+      "At MME we are more than just a team — we are a family that values integrity, collaboration and mutual respect, and we continue to invest in making MME a great place to work.",
+    ],
+  },
+];
+
+export const TEAM = [
+  { name: "Kundan Sharma", role: "Project Manager" },
+  { name: "Brijesh Singh", role: "Project Manager" },
+  { name: "KB Mishra", role: "Project Manager" },
+  { name: "Ayush Sharma", role: "Project Manager" },
+  { name: "Anil Chaudhary", role: "Project Manager" },
+  { name: "Milan Dey", role: "HR Manager" },
+  { name: "Nitish Shrivastava", role: "Project Manager" },
+  { name: "Uday Bagare", role: "Project Manager" },
+];
+
+export const OUR_CLIENTS = [
+  { name: "UltraTech Cement", location: "Patna, Bihar", sector: "Cement" },
+  { name: "Jindal Steel (MASYC)", location: "Jajpur, Odisha", sector: "Steel" },
+  { name: "Nuvoco Vistas Corp. Ltd.", location: "Charkhi Dadri, Haryana", sector: "Cement" },
+  { name: "Shree Cement Ltd.", location: "Nawalgarh, Rajasthan", sector: "Cement" },
+  { name: "Dalmia Cement (Bharat) Ltd.", location: "Cuttack, Odisha", sector: "Cement" },
+  { name: "Larsen & Toubro", location: "Pan India", sector: "Infrastructure" },
+  { name: "Wonder Cement Ltd.", location: "Chittorgarh, Rajasthan", sector: "Cement" },
+  { name: "Reliance Industries Ltd.", location: "Jamnagar, Gujarat", sector: "Oil & Gas" },
+];
+
+export const ANNUAL_REPORTS = [
+  { year: "2025 – 2026", label: "FY 2025-26", status: "In Progress", pdf: "" },
+  { year: "2024 – 2025", label: "FY 2024-25", status: "Published", pdf: "" },
+  { year: "2023 – 2024", label: "FY 2023-24", status: "Published", pdf: "" },
+  { year: "2022 – 2023", label: "FY 2022-23", status: "Published", pdf: "" },
+  { year: "2021 – 2022", label: "FY 2021-22", status: "Published", pdf: "" },
+  { year: "2020 – 2021", label: "FY 2020-21", status: "Published", pdf: "" },
+  { year: "2019 – 2020", label: "FY 2019-20", status: "Published", pdf: "" },
+];
+
+export const REPORT_HIGHLIGHTS = [
+  { value: "35+", label: "Projects Delivered" },
+  { value: "12+", label: "Marquee Clients" },
+  { value: "20+", label: "Years of Expertise" },
+  { value: "6", label: "Industry Sectors" },
 ];

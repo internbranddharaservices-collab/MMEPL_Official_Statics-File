@@ -8,6 +8,11 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/toaster";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
+import AboutCompanyPage from "./pages/AboutCompanyPage";
+import BoardOfDirectorsPage from "./pages/BoardOfDirectorsPage";
+import OurTeamPage from "./pages/OurTeamPage";
+import OurClientsPage from "./pages/OurClientsPage";
+import AnnualReportPage from "./pages/AnnualReportPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -36,6 +41,12 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/we-are" element={<AboutCompanyPage />} />
+          <Route path="/we-are/about-company" element={<AboutCompanyPage />} />
+          <Route path="/we-are/board-of-directors" element={<BoardOfDirectorsPage />} />
+          <Route path="/we-are/our-team" element={<OurTeamPage />} />
+          <Route path="/we-are/our-clients" element={<OurClientsPage />} />
+          <Route path="/we-are/annual-report" element={<AnnualReportPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/:id" element={<ServiceDetailPage />} />

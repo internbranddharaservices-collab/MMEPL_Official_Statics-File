@@ -4,7 +4,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { HERO, IMAGES } from "../content";
 import { scrollToId } from "./Navbar";
 
-const ROUTE = { about: "/about", services: "/services", projects: "/projects" };
+const ROUTE = { about: "/we-are/about-company", services: "/services", projects: "/projects" };
 
 export default function Hero() {
   const [idx, setIdx] = useState(0);
@@ -49,7 +49,7 @@ export default function Hero() {
               {slide.title}
             </h1>
             <button
-              onClick={() => navigate(ROUTE[slide.target] || "/about")}
+              onClick={() => navigate(ROUTE[slide.target] || "/we-are/about-company")}
               className="group mt-10 inline-flex items-center gap-3 bg-[#c8a25c] hover:bg-[#d9b877] text-[#0a1a2f] font-semibold text-sm tracking-wide px-8 py-4 rounded-full transition-colors"
             >
               {slide.cta}
