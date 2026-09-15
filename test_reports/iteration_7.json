@@ -1,0 +1,25 @@
+{
+  "iteration": 7,
+  "summary": "Verified homepage About section and About Company intro both show organized lead statement + 4 labeled capability panels + dark commitment callout, with all required content terms intact. 2/2 checks passed.",
+  "passed": 2,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Homepage About copy is visually organized instead of appearing as one dense paragraph block",
+      "name": "homepage-about-organized-sections",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 900px viewport on /, asserted data-testid=home-about-lead visible, home-about-highlights contains exactly 4 <article> panels labeled 'Engineering Experience', 'End-to-End EPC', 'Pan-India Execution', 'HSE, Quality & Delivery', home-about-commitment has computed background-color rgb(10, 26, 47) (dark), and page body text contains 'ISO 9001', 'AFR', 'EPC', 'HSE', 'client satisfaction'. All assertions passed."
+    },
+    {
+      "criterion": "We Are → About Company uses the same organized company-profile treatment",
+      "name": "about-company-intro-organized-sections",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 900px viewport on /we-are/about-company, asserted data-testid=about-company-intro-lead visible, about-company-intro-highlights contains exactly 4 <article> panels with the same 4 labels, about-company-intro-commitment has dark background rgb(10, 26, 47), and no page/console errors were thrown during the check."
+    }
+  ]
+}
