@@ -1,0 +1,63 @@
+{
+  "iteration": 9,
+  "summary": "Verified the MME static-site conversion (Hostinger + Google Apps Script mailer pivot) end-to-end. 7/7 acceptance criteria covered by 4 browser checks + 1 backend/file-artifact test (3 assertions): (1) frontend/build served standalone (no /api or backend calls, SPA routing works, form-config.js present) — passed; (2) full site navigation intact on the live public preview (Home/Careers/Contact/Projects, header, footer, WhatsApp link, Get-a-Quote button, no broken images/fonts, no console errors) — passed; (3) Career form has all 10 fields + honeypot, required-resume HTML5 validation blocks empty submit, >5MB resume is rejected client-side with an explicit message, and submitting a valid file with the intentionally blank appsScriptUrl shows the professional 'email info@mmepl.co.in' fail-safe (never a false success) — passed; (4) Contact/Get-a-Quote form blocks empty required fields and shows the same fail-safe message on submit — passed; (5) Code.gs / SETUP.md / HOSTINGER_DEPLOYMENT.md static-artifact checks confirm origin+token+honeypot+timestamp+rate-limit+file MIME/extension/signature/size validation, exactly one MailApp.sendEmail to Script Property RECIPIENT_EMAIL, no Sheets/Drive/DB writes, no applicant auto-reply, a postMessage callback, and complete setup/deployment documentation — passed (3/3 pytest asserts). All checks green on first run, no reruns needed.",
+  "passed": 7,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [
+    "spec_deviation_confirmed: appsScriptUrl in frontend/public/form-config.js is intentionally blank pending the user's real deployed Google Apps Script /exec URL. Both forms correctly show the 'email info@mmepl.co.in' fail-safe today (verified) instead of a false success. No live end-to-end email delivery could be tested (by design) until the main agent receives and pastes in the real URL; retest the two form checks once that happens to confirm a genuine success path.",
+    "environment_note: supervisor's configured backend (/app/backend, FastAPI on :8001) and frontend (/app/frontend, CRA dev) are a stale duplicate unrelated to this app; the live app runs from /app/MME-Private-Limited-2 (frontend dev server on :3000, manually started outside supervisor, and the public preview URL). All frontend testing was done against those live sources. The new backend/tests/test_tscheck_appsscript_and_docs.py file was added under /app/backend/tests per the required test-artifact location and passes via `python -m pytest` without needing the FastAPI server (it only reads repo files, since no Apps Script endpoint is deployed yet)."
+  ],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "The MME website is a fully static frontend suitable for Hostinger public_html",
+      "name": "static-build-serves-clean",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Served frontend/build/ standalone via a plain static file server (no rewrite rules). / loaded with header-logo-image visible; GET /form-config.js -> 200 containing 'MME_FORM_CONFIG'; client-side navigation to /projects, /careers (career-application-form visible), /contact (contact-form visible) all worked via React Router with zero full reloads; zero requests to /api, :8001, or mongodb captured throughout."
+    },
+    {
+      "criterion": "Existing website pages, layout, and content remain available after static conversion",
+      "name": "site-navigation-intact-on-preview",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On https://mme-transparent-ui.preview.emergentagent.com: header-logo-image and header-get-quote-button visible on /, navigated to /careers, /contact, /projects successfully, floating-whatsapp-link visible; 0 failed image/font requests; 0 console errors (excluding a benign pre-existing DataCloneError swallow-handler already in index.html)."
+    },
+    {
+      "criterion": "Career form supports complete candidate information and resume attachment without storage",
+      "name": "career-form-resume-validation-and-config-guard",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "All 10 testids (role, full-name, dob, gender, phone, email, qualification, address, marital-status, resume, photo) visible on /careers. Submitting with no resume: HTML5 required blocked submit, career-form-status never rendered. Submitting a 6MB PDF: status showed '...5 MB or smaller.' before any network activity. Submitting a valid small PDF with blank appsScriptUrl: status text contained 'info@mmepl.co.in' and did not contain 'success' (fail-safe, no false positive, no localStorage/DB write involved anywhere in the flow)."
+    },
+    {
+      "criterion": "Contact/Get-a-Quote form uses the same static mailer architecture",
+      "name": "contact-form-validation-and-config-guard",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /contact, submitting with all fields empty produced no contact-form-status element (blocked by required-field toast check in submit handler). Filling name/email/phone/message and submitting: contact-form-status appeared containing 'info@mmepl.co.in' and not 'success', proving the same shared submitWebsiteForm/config fail-safe as the Career form."
+    },
+    {
+      "criterion": "Static form configuration fails safely before the real Apps Script URL is supplied",
+      "name": "career-form-resume-validation-and-config-guard / contact-form-validation-and-config-guard",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Both forms, with window.MME_FORM_CONFIG.appsScriptUrl == '' (getConfig() regex /^https:\\/\\/script\\.google\\.com\\/macros\\/s\\/.+\\/exec$/ fails to match empty string), throw 'The website email service is not configured yet. Please email info@mmepl.co.in directly.' before any network request is attempted; UI renders that exact guidance and never shows a success state."
+    },
+    {
+      "criterion": "Google Apps Script mailer is deployable through Workspace without frontend credentials",
+      "name": "test_apps_script_mailer_enforces_security_controls_and_no_storage",
+      "lane": "backend",
+      "status": "passed",
+      "evidence": "File-artifact test on google-apps-script/Code.gs (no live /exec endpoint exists yet by design) asserts: ALLOWED_ORIGINS/'Origin rejected', PUBLIC_FORM_TOKEN/'Token rejected', honeypot 'website' field/'Spam rejected', submittedAt/'Expired request', rateLimit_/'Rate limit exceeded', MIME-set + extension-set + PDF magic-byte (0x25 0x50 0x44 0x46) + size checks, exactly one MailApp.sendEmail(...) call reading RECIPIENT_EMAIL from Script Properties, zero SpreadsheetApp/DriveApp/appendRow storage APIs anywhere in the file, and a window.parent.postMessage({source:'mmepl-form-mailer',...}) callback. `cd /app/backend && python -m pytest tests/test_tscheck_appsscript_and_docs.py` -> 3 passed in 0.46s."
+    },
+    {
+      "criterion": "cPanel handoff documentation is complete",
+      "name": "test_google_apps_script_setup_doc_covers_full_workflow / test_hostinger_deployment_doc_covers_build_upload_and_future_updates",
+      "lane": "backend",
+      "status": "passed",
+      "evidence": "google-apps-script/SETUP.md contains Script properties table (RECIPIENT_EMAIL/ALLOWED_ORIGINS/PUBLIC_FORM_TOKEN), Deploy/Web app/'/exec' instructions, a 'Verify before launch' checklist, and a Google-only 'Alternatives' section. HOSTINGER_DEPLOYMENT.md contains 'yarn build', public_html upload steps including .htaccess and form-config.js, and future update guidance for content.js, images, and Apps Script properties. Both files asserted present via pytest (included in the 3 passed above)."
+    }
+  ]
+}
