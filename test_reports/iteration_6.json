@@ -1,0 +1,18 @@
+{
+  "iteration": 6,
+  "summary": "Verified hero carousel description text color fix (white, readable) across all 3 slides and confirmed navigation works with no console errors.",
+  "passed": 1,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "Hero carousel supporting text is white/readable on all 3 slides, and navigation between slides remains functional without errors",
+      "name": "hero-carousel-text-white",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Clicked hero-indicator-0/1/2, asserted hero-slide-description-0/1/2 visible with computed color rgb(255, 255, 255) for each; console_errors: []; screenshots captured for all 3 slides."
+    }
+  ]
+}
