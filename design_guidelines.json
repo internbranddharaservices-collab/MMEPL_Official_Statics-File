@@ -1,34 +1,241 @@
 {
-  "general_instructions": "Implement narrowly-scoped UI changes strictly targeting the header logo and wordmark treatment in Navbar.jsx as per the problem statement. Do not apply unrelated changes.",
-  "component_path": "/app/frontend/src/components/Navbar.jsx",
+  "project_title": "MME Private Limited - Corporate Industrial Hero Typography & Layout Redesign",
+  "archetype": "THE PERFORMANCE PRO / HEAVY INDUSTRIAL PRECISION",
+  "theme": "dark_hero_industrial",
+  "overview": "Focused visual design and typography overhaul for the MME (Mangal Murtey Enterprises Private Limited) home hero carousel. Transforms the 3-slide hero from generic text overlay into a world-class, high-impact industrial powerhouse hero faithful to the reference style: crisp industrial typography hierarchy, dual-tone punchy White (#FFFFFF) & Vibrant Safety Orange (#FF6B00 / #FF7A00) text pairing, high-contrast kicker pill, rich descriptive subheadings, dual primary + secondary CTA buttons, modern slide track controls, and deep navy-vignette industrial scrim overlays.",
+  
+  "entry_surfaces": {
+    "/": "Hero full-bleed 3-slide rotating canvas with cinematic navy-to-transparent scrim, high-impact dual-tone White & Orange headline typography, badge kicker, sub-headline paragraph, dual CTA buttons, slide counter track, and bottom scroll indicator"
+  },
+
+  "colors": {
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#0a1a2f",
+        "on_bg": "#ffffff",
+        "on_bg_muted": "#94a3b8",
+        "roles": {
+          "accent_orange": "#ff6b00",
+          "accent_orange_hover": "#ea580c",
+          "accent_orange_light": "#ff8533",
+          "gold_legacy": "#c8a25c",
+          "border_glass": "rgba(255, 255, 255, 0.15)"
+        }
+      },
+      {
+        "name": "hero_canvas",
+        "kind": "image",
+        "contrast_against": "#081322",
+        "guarantee": "multi-layer scrim: linear-gradient(90deg, rgba(10,26,47,0.95) 0%, rgba(10,26,47,0.75) 45%, rgba(10,26,47,0.30) 100%), linear-gradient(0deg, rgba(10,26,47,0.98) 0%, transparent 40%)",
+        "on_bg": "#ffffff",
+        "on_bg_muted": "#cbd5e1",
+        "roles": {
+          "headline_white": "#ffffff",
+          "headline_orange": "#ff7a00",
+          "headline_orange_glow": "#ff6b00",
+          "kicker_badge_bg": "rgba(255, 107, 0, 0.12)",
+          "kicker_badge_border": "rgba(255, 107, 0, 0.35)",
+          "kicker_badge_text": "#ff8c33",
+          "subtext_light": "#e2e8f0",
+          "cta_primary_bg": "#ff6b00",
+          "cta_primary_text": "#ffffff",
+          "cta_secondary_border": "rgba(255, 255, 255, 0.3)",
+          "cta_secondary_text": "#ffffff",
+          "cta_secondary_hover_bg": "rgba(255, 255, 255, 0.1)"
+        }
+      },
+      {
+        "name": "panel_glass",
+        "kind": "solid",
+        "bg": "rgba(10, 26, 47, 0.85)",
+        "on_bg": "#ffffff",
+        "on_bg_muted": "#94a3b8"
+      }
+    ],
+    "accent": "#ff6b00",
+    "on_accent": "#ffffff"
+  },
+
+  "typography": {
+    "font_family_headline": "'Archivo', 'Barlow Condensed', sans-serif",
+    "font_family_body": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+    "font_family_mono": "'JetBrains Mono', 'IBM Plex Mono', monospace",
+    "scale_px": {
+      "display": 60,
+      "h1": 48,
+      "h2": 36,
+      "h3": 24,
+      "body": 16,
+      "caption": 14
+    },
+    "hero_typography_rules": {
+      "kicker": {
+        "text_transform": "uppercase",
+        "font_size": "text-xs sm:text-sm",
+        "font_weight": "font-bold",
+        "letter_spacing": "tracking-[0.2em] sm:tracking-[0.25em]",
+        "color": "text-[#ff8c33]",
+        "container_classes": "inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#ff6b00]/15 border border-[#ff6b00]/30 backdrop-blur-md mb-5 sm:mb-6"
+      },
+      "headline": {
+        "font_size": "text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem]",
+        "font_weight": "font-black tracking-tight",
+        "line_height": "leading-[1.05] sm:leading-[1.02]",
+        "color_treatment": "White primary words with key industrial action terms highlighted in Vibrant Orange (#ff7a00 / #ff6b00)",
+        "styling_detail": "Uses drop-shadow-sm for extreme contrast against industrial machinery background layers"
+      },
+      "sub_headline": {
+        "font_size": "text-base sm:text-lg md:text-xl",
+        "font_weight": "font-normal",
+        "line_height": "leading-relaxed",
+        "color": "text-slate-200",
+        "max_width": "max-w-2xl sm:max-w-3xl",
+        "margin": "mt-6 mb-8 sm:mb-10"
+      },
+      "cta_buttons": {
+        "primary": {
+          "classes": "px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#ff6b00] hover:bg-[#ea580c] text-white font-bold text-sm sm:text-base tracking-wide shadow-lg shadow-[#ff6b00]/25 hover:shadow-[#ff6b00]/40 transition-all duration-300 flex items-center gap-2.5 group hover:-translate-y-0.5",
+          "test_id": "hero-primary-cta"
+        },
+        "secondary": {
+          "classes": "px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 hover:border-white/40 font-semibold text-sm sm:text-base tracking-wide backdrop-blur-md transition-all duration-300 flex items-center gap-2 hover:-translate-y-0.5",
+          "test_id": "hero-secondary-cta"
+        }
+      }
+    }
+  },
+
+  "hero_slides_content_spec": [
+    {
+      "slide_index": 0,
+      "badge": "MME PRIVATE LIMITED • EST. 2019",
+      "kicker": "CIVIL & MECHANICAL INFRASTRUCTURE",
+      "title_part_1": "ENGINEERING THE",
+      "title_part_orange": "FOUNDATIONS OF",
+      "title_part_2": "MODERN INDIA",
+      "full_title_markup": "<span class='text-white'>ENGINEERING THE </span><span class='text-[#ff7a00]'>FOUNDATIONS</span><br /><span class='text-white'>OF MODERN </span><span class='text-[#ff7a00]'>INDIA.</span>",
+      "tagline": "Specialised EPC execution, heavy structural fabrication, and turnkey industrial development for the nation's most demanding core infrastructure projects.",
+      "primary_cta": "Explore Our Solutions",
+      "primary_target": "/we-are/about-company",
+      "secondary_cta": "View Mega Projects",
+      "secondary_target": "/projects",
+      "image_url": "https://images.unsplash.com/photo-1666219462105-2909c2d72d01?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400"
+    },
+    {
+      "slide_index": 1,
+      "badge": "POWER • CEMENT • STEEL",
+      "kicker": "MULTI-DISCIPLINARY CAPABILITIES",
+      "title_part_1": "PRECISION EXECUTION",
+      "title_part_orange": "ACROSS CEMENT,",
+      "title_part_2": "POWER & STEEL PLANTS",
+      "full_title_markup": "<span class='text-white'>PRECISION </span><span class='text-[#ff7a00]'>EXECUTION</span><br /><span class='text-white'>ACROSS CEMENT, </span><span class='text-[#ff7a00]'>POWER & STEEL.</span>",
+      "tagline": "Over 20+ years of engineering leadership delivering complete mechanical erection, kiln systems, boiler houses, and balance of plant solutions.",
+      "primary_cta": "Industrial Expertise",
+      "primary_target": "/services",
+      "secondary_cta": "Client Portfolios",
+      "secondary_target": "/clients",
+      "image_url": "https://images.unsplash.com/photo-1646516447226-e2eb0e6e3f36?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400"
+    },
+    {
+      "slide_index": 2,
+      "badge": "TRUSTED BY TATA, L&T, ULTRATECH",
+      "kicker": "DISCIPLINE • QUALITY • ON TIME",
+      "title_part_1": "DELIVERED WITH",
+      "title_part_orange": "UNCOMPROMISING SAFETY",
+      "title_part_2": "& ON-TIME RIGOUR",
+      "full_title_markup": "<span class='text-white'>DELIVERED WITH </span><span class='text-[#ff7a00]'>DISCIPLINE,</span><br /><span class='text-[#ff7a00]'>QUALITY</span><span class='text-white'> & ON-TIME RIGOUR.</span>",
+      "tagline": "35+ landmark projects executed across India with an uncompromising safety record and zero-defect craftsmanship.",
+      "primary_cta": "View Track Record",
+      "primary_target": "/projects",
+      "secondary_cta": "Contact Project Desk",
+      "secondary_target": "/contact",
+      "image_url": "https://images.unsplash.com/uploads/14123892966835548e7bd/14369636?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400"
+    }
+  ],
+
+  "visual_enhancers": {
+    "gradient_overlays": [
+      "Horizontal directional scrim from left: bg-gradient-to-r from-[#0a1a2f]/98 via-[#0a1a2f]/80 to-[#0a1a2f]/35",
+      "Bottom baseline darkener: bg-gradient-to-t from-[#0a1a2f] via-[#0a1a2f]/50 to-transparent",
+      "Subtle top-nav glass vignette: bg-gradient-to-b from-[#0a1a2f]/70 to-transparent"
+    ],
+    "glassmorphism": "backdrop-blur-md bg-white/10 border border-white/20 for interactive chips and secondary CTAs",
+    "kenburns_animation": "Slow cinematic zoom on background slides (scale 1.03 to 1.15 over 12s)",
+    "orange_accent_glow": "box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.4)"
+  },
+
+  "layout_and_controls": {
+    "section_wrapper": "relative h-screen min-h-[680px] max-h-[1080px] w-full overflow-hidden bg-[#0a1a2f]",
+    "content_container": "relative z-10 h-full max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col justify-center pt-16 sm:pt-20",
+    "slide_indicators": {
+      "position": "absolute bottom-10 right-6 lg:right-12 z-20 flex items-center gap-3.5 bg-[#0a1a2f]/70 border border-white/15 backdrop-blur-md px-4 py-2.5 rounded-full",
+      "active_bar": "h-2 w-10 bg-[#ff6b00] rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,107,0,0.6)]",
+      "inactive_bar": "h-2 w-4 bg-white/30 hover:bg-white/50 rounded-full transition-all duration-300",
+      "counter_styling": "font-mono text-xs font-semibold tracking-wider text-white/80"
+    },
+    "scroll_down_indicator": {
+      "position": "absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-white/60 hover:text-[#ff7a00] transition-colors cursor-pointer group",
+      "icon_animation": "animate-bounce",
+      "test_id": "hero-scroll-down-btn"
+    }
+  },
+
+  "motion": {
+    "slide_transition": "Opacity fade duration-1000 ease-in-out",
+    "content_reveal": "Staggered entrance: Kicker badge delay 0ms, Headline delay 150ms, Tagline delay 300ms, Buttons delay 450ms",
+    "slide_interval_ms": 6500,
+    "interactive_hover": "Transform translateY(-2px) with smooth ease-out 200ms"
+  },
+
+  "accessibility": {
+    "wcag_compliance": "WCAG AA compliant contrast (>4.5:1 for body and subtext, >3:1 for large display titles)",
+    "contrast_pairs": {
+      "white_on_navy": "13.8:1 (Passes AAA)",
+      "orange_on_navy": "5.6:1 (Passes AA and AAA Large)",
+      "slate200_on_navy": "10.4:1 (Passes AAA)"
+    },
+    "reduced_motion": "Respects prefers-reduced-motion: disable kenburns zoom and translateY stagger, fall back to simple opacity crossfade",
+    "screen_reader": "Aria live regions for active carousel slide announce, clear aria-labels on slide indicators and navigation buttons"
+  },
+
+  "image_urls": [
+    {
+      "url": "https://images.unsplash.com/photo-1666219462105-2909c2d72d01?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400",
+      "category": "hero_slide_1",
+      "description": "Heavy industrial steel fabrication and infrastructure site"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1646516447226-e2eb0e6e3f36?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400",
+      "category": "hero_slide_2",
+      "description": "High-temperature cement and power production plant facility"
+    },
+    {
+      "url": "https://images.unsplash.com/uploads/14123892966835548e7bd/14369636?crop=entropy&cs=srgb&fm=jpg&q=85&w=2400",
+      "category": "hero_slide_3",
+      "description": "Large scale heavy engineering assembly machinery"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?crop=entropy&cs=srgb&fm=jpg&q=85&w=1200",
+      "category": "alternative_industrial_hero",
+      "description": "Interior of heavy manufacturing plant with steel structures"
+    }
+  ],
+
+  "component_paths": {
+    "hero_component": "/app/frontend/src/components/Hero.jsx",
+    "content_data": "/app/frontend/src/content.js",
+    "global_css": "/app/frontend/src/index.css",
+    "home_page": "/app/frontend/src/pages/Home.jsx"
+  },
+
   "instructions_to_main_agent": [
-    "In /app/frontend/src/components/Navbar.jsx, locate the logo wrappers in both the desktop header and the mobile menu.",
-    "Remove the classes `bg-white`, `rounded-md`, `p-1`, and `shadow-md` from the `<span>` wrapping the `<img src={COMPANY.logo} />` to make the background transparent.",
-    "Add `brightness-0 invert` to the logo `<img />` tags to turn the icon color to pure white.",
-    "For the desktop logo wordmark, currently separated into 'MME' and 'Private Limited', combine them or style them equally. Remove the small, translucent styles from 'Private Limited' (`text-[9px] text-white/60`) and make it match 'MME' (e.g., `text-xl tracking-tight text-white font-display` with `fontWeight: 900`). A simple approach is combining them into one span: `MME Private Limited`.",
-    "For the mobile menu logo wordmark, currently just 'MME', change the text to 'MME Private Limited' so it matches the new bold desktop visibility.",
-    "Add `data-testid` attributes to interactive elements such as the mobile menu toggle buttons."
-  ],
-  "accessibility": [
-    "Ensure the white logo has sufficient contrast against the background header theme.",
-    "All interactive and key informational elements MUST include a `data-testid` attribute to facilitate robust automated testing."
-  ],
-  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
-    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
-    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
-    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
-    "Create depth through layered design elements with z-index hierarchy",
-    "Use glass-morphism effects with backdrop filters (12-24px blur)",
-    "You MUST NOT apply universal transition. Eg: `transition: all`. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
-    "You MUST NOT center align the app container, ie do not add `.App { text-align: center; }` in the css file. This disrupts the human natural reading flow of text",
-    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
-    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
-    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
-    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
-    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
-    "Prioritize using pre-existing components from src/components/ui when applicable",
-    "Create new components that match the style and conventions of existing components when needed",
-    "Use `sonner` for toasts",
-    "Sonner component are located in `/app/src/components/ui/sonner.tsx`"
+    "1. Update /app/frontend/src/content.js HERO array to incorporate rich multi-part title strings, distinctive kicker badges, high-impact industrial taglines, and secondary CTA metadata as specified in hero_slides_content_spec.",
+    "2. Redesign /app/frontend/src/components/Hero.jsx to render the new typography hierarchy matching the attached reference style: bold kicker badge pill, dynamic White + Vibrant Orange (#ff7a00) headline spans, high-readability subtitle copy, and dual CTAs (Primary Orange with hover translate, Secondary Glass/Outline).",
+    "3. Keep full carousel functionality (automatic rotation every 6.5s, slide indicators with active duration bar, next/prev click, paused/synced indicator tabs, and smooth Ken Burns image animations).",
+    "4. Ensure all interactive buttons, indicators, and links carry data-testid attributes (e.g. data-testid='hero-slide-indicator-0', data-testid='hero-primary-cta', data-testid='hero-secondary-cta', data-testid='hero-scroll-down-btn').",
+    "5. Ensure dark navy multi-layer scrims are maintained so all White and Orange typography achieves flawless APCA/WCAG AA+ contrast against photographic backgrounds.",
+    "6. Verify mobile responsiveness: scale typography smoothly from text-3xl/4xl on mobile to text-6xl/7xl on desktop screens without word collisions or clipping."
   ]
 }
