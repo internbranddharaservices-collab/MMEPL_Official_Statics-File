@@ -1,0 +1,55 @@
+{
+  "iteration": 8,
+  "summary": "Verified header Get-a-Quote replacement (logo kept, no phone number, navigates to /contact), and the new Career Application Form (Quick Apply removed, Role free-text + all 10 requested fields, two-column desktop layout, full successful submission with resume+photo returning application_status=received and notification_status=pending_configuration, and backend rejects missing resume / invalid email). 6/6 checks passed (2 backend, 4 browser). Note: environment has a stray legacy copy of the app at /app/backend and /app/frontend that is NOT what's actually running (backend pid 1413 and frontend pid 1453 run out of /app/MME-Private-Limited-2); all testing was done against the live running server (localhost:8001/:3000 and the public preview URL), which reflects the up-to-date code.",
+  "passed": 6,
+  "failed": 0,
+  "bugs": [],
+  "action_items": [
+    "environment_note: /app/backend/server.py and /app/frontend/src on disk are a stale duplicate of the app and do not match the code actually serving :8001/:3000 (real source lives at /app/MME-Private-Limited-2). This does not block testing (verified against the live running processes/preview URL) but the main agent should confirm which directory is the source of truth to avoid future drift, since supervisor's configured directories (/app/backend, /app/frontend) are out of sync with what's live."
+  ],
+  "retest_needed": false,
+  "checks": [
+    {
+      "criterion": "A complete career application submits successfully",
+      "name": "test_career_application_missing_resume_is_rejected / test_career_application_invalid_email_is_rejected (companion validation cases in same file)",
+      "lane": "backend",
+      "status": "passed",
+      "evidence": "POST /api/careers/apply with full valid fields + resume.pdf (%PDF-1.4) + photo.png -> 201 {application_status: 'received', notification_status: 'pending_configuration', id: <uuid>}. File: backend/tests/test_tscheck_careers_apply_success.py"
+    },
+    {
+      "criterion": "Invalid or incomplete application data is rejected",
+      "name": "test_tscheck_careers_apply_validation",
+      "lane": "backend",
+      "status": "passed",
+      "evidence": "POST /api/careers/apply without resume file -> 422 (pydantic 'Field required' for resume); POST with email='not-an-email' + valid PDF resume -> 422 {'detail':'Enter a valid email address'}. File: backend/tests/test_tscheck_careers_apply_validation.py"
+    },
+    {
+      "criterion": "Header keeps the approved logo and replaces the phone number with a Get a Quote action",
+      "name": "header-quote-replaces-phone",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "At 1280px on /, header-logo-image visible, header-get-quote-button visible with text 'Get a Quote', header innerText has no phone-number pattern and 0 tel: links, clicking the button navigates to /contact."
+    },
+    {
+      "criterion": "Careers page replaces Quick Apply with a formal Career Application Form",
+      "name": "careers-form-replaces-quick-apply",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "On /careers, career-form-heading text is exactly 'Career Application Form', page body text does not contain 'quick apply' (case-insensitive), and Role/Full Name inputs sit on the same row (y-delta <10px, name.x > role.x) confirming a two-column desktop layout."
+    },
+    {
+      "criterion": "Role is a free-text field and all requested application fields are present",
+      "name": "careers-form-replaces-quick-apply",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "career-role-input has type='text'; all of career-full-name-input, career-date-of-birth-input, career-gender-select, career-phone-input, career-email-input, career-qualification-input, career-address-input, career-marital-status-select, career-resume-input, career-photo-input are visible on /careers."
+    },
+    {
+      "criterion": "A complete career application submits successfully / Career applications persist while placeholder SMTP remains safely disabled",
+      "name": "careers-application-submits-successfully",
+      "lane": "browser",
+      "status": "passed",
+      "evidence": "Filled all fields, uploaded tscheck-resume.pdf (%PDF-1.4) and tscheck-photo.png, submitted; captured POST /api/careers/apply -> 201 JSON {application_status:'received', notification_status:'pending_configuration'}, and career-form-status success message rendered in the UI."
+    }
+  ]
+}
