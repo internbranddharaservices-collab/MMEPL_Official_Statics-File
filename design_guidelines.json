@@ -1,0 +1,34 @@
+{
+  "general_instructions": "Implement narrowly-scoped UI changes strictly targeting the header logo and wordmark treatment in Navbar.jsx as per the problem statement. Do not apply unrelated changes.",
+  "component_path": "/app/frontend/src/components/Navbar.jsx",
+  "instructions_to_main_agent": [
+    "In /app/frontend/src/components/Navbar.jsx, locate the logo wrappers in both the desktop header and the mobile menu.",
+    "Remove the classes `bg-white`, `rounded-md`, `p-1`, and `shadow-md` from the `<span>` wrapping the `<img src={COMPANY.logo} />` to make the background transparent.",
+    "Add `brightness-0 invert` to the logo `<img />` tags to turn the icon color to pure white.",
+    "For the desktop logo wordmark, currently separated into 'MME' and 'Private Limited', combine them or style them equally. Remove the small, translucent styles from 'Private Limited' (`text-[9px] text-white/60`) and make it match 'MME' (e.g., `text-xl tracking-tight text-white font-display` with `fontWeight: 900`). A simple approach is combining them into one span: `MME Private Limited`.",
+    "For the mobile menu logo wordmark, currently just 'MME', change the text to 'MME Private Limited' so it matches the new bold desktop visibility.",
+    "Add `data-testid` attributes to interactive elements such as the mobile menu toggle buttons."
+  ],
+  "accessibility": [
+    "Ensure the white logo has sufficient contrast against the background header theme.",
+    "All interactive and key informational elements MUST include a `data-testid` attribute to facilitate robust automated testing."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: `transition: all`. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add `.App { text-align: center; }` in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Use `sonner` for toasts",
+    "Sonner component are located in `/app/src/components/ui/sonner.tsx`"
+  ]
+}
